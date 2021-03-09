@@ -40,7 +40,7 @@ We will do our best to provision access within 1-2 days of receiving your access
 Once we’ve enabled Arm resources for your organization, update your `.circleci/config.yml` file to use the Arm resource. Here is an example config:
 
 ```yaml
-# .circleci/config.yml
+# Use Arm on CircleCI by simply adding it to your config: 
 version: 2.1
 
 jobs:
@@ -51,19 +51,11 @@ jobs:
     steps:
       - run: uname -a
       - run: echo "Hello, Arm!"
-  build-large:
-    machine:
-      image: ubuntu-2004:202101-01
-    resource_class: arm.large
-    steps:
-      - run: uname -a
-      - run: echo "Hello, Arm!"
 
 workflows:
   build:
     jobs:
       - build-medium
-      - build-large
 ```
 
 ## Limitations
